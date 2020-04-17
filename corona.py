@@ -23,9 +23,20 @@ for x in summary["Countries"]:
 usInfo = requests.get(api_url + "/live/country/united-states/status/confirmed").json()
 #print(usInfo)
 
+print("Getting data from data file.")
+
+with open('data.txt', 'r') as file:
+     lastusInfo = file.readline()
+     print("last info")
+     print(lastusInfo)
+print("got it.")
+
+print("clearing past file")
 # clear the file
 open('data.txt', 'w').close()
 
 with open('data.txt', 'w') as file:
      file.write(json.dumps(usInfo))
 print("Wrote data to data.txt.")
+
+
