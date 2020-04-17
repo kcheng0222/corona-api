@@ -13,8 +13,19 @@ allCountries = requests.get(api_url + "countries").json()
 #pp(allCountries)
 
 summary = requests.get(api_url + "summary").json()
-pp(summary)
+#pp(summary)
 
 for x in summary["Countries"]:
     if x["CountryCode"] == "US":
-        print(x)
+        #print(x)
+        pass
+
+usInfo = requests.get(api_url + "/live/country/united-states/status/confirmed").json()
+#print(usInfo)
+
+# clear the file
+open('data.txt', 'w').close()
+
+with open('data.txt', 'w') as file:
+     file.write(json.dumps(usInfo))
+print("Wrote data to data.txt.")
