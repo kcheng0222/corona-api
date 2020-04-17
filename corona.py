@@ -8,7 +8,6 @@ api_url = "https://api.covid19api.com/"
 #response = requests.get(api_url)
 #r = response.json()
 #pp(r)
-#yeet
 
 #allCountries = requests.get(api_url + "countries").json()
 #pp(allCountries)
