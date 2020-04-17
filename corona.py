@@ -14,3 +14,7 @@ allCountries = requests.get(api_url + "countries").json()
 
 summary = requests.get(api_url + "summary").json()
 pp(summary)
+
+for x in summary["Countries"]:
+    if x["CountryCode"] == "US":
+        print(x)
