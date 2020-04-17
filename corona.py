@@ -1,5 +1,7 @@
 import requests
+import json
 
 api_url = "https://api.covid19api.com/"
 response = requests.get(api_url)
-print(response.json())
+r = response.json()
+print(json.dumps(r, indent=2))
