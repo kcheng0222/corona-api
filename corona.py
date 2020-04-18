@@ -1,3 +1,6 @@
+'''
+CORONAVIRUS API
+'''
 import requests
 import json
 
@@ -43,3 +46,30 @@ with open('data.txt', 'w') as file:
 print("success.")
 
 
+'''
+NUMBERS API
+'''
+summary = requests.get(api_url + "summary").json()
+number = 42  # some default value
+for x in summary["Countries"]:
+    if x["CountryCode"] == "US":
+        number = x["TotalConfirmed"]
+        break
+
+numbers_url = "https://numbersapi.p.rapidapi.com/"+ str(number) + "/trivia"
+
+querystring = {"fragment":"true","notfound":"floor","json":"true"}
+
+headers = {
+    'x-rapidapi-host': "numbersapi.p.rapidapi.com",
+    'x-rapidapi-key': "527c0bbb72msh117137152ac7545p159eebjsne9d4f5b1b4fd"
+    }
+
+response = requests.request("GET", numbers_url, headers=headers, params=querystring)
+
+content = json.loads(response.text)
+
+# PRINTING THE MESSAGE
+print("\n"*3)
+print("There are %s confirmed cases in America."%number)
+print(str(number) + " is " + content["text"])
